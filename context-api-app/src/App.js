@@ -3,15 +3,20 @@ import './App.css';
 import { useContext } from 'react';
 import UserInfoContext from './context/UserInfoContext'; './context/UserInfoContext';
 import BlogPage from './components/BlogPage';
+import { ThemeProvider } from './context/ThemeProvider';
+import ContentComponent from './components/ContentComponent';
 
 export default function App() {
 
   const userInfo = { username: "Admin", isAdmin: true }
 
   return (
-    <UserInfoContext.Provider value={userInfo}>
-      <BlogPage></BlogPage>
-    </UserInfoContext.Provider>
+    <ThemeProvider>
+      <UserInfoContext.Provider value={userInfo}>
+        <BlogPage></BlogPage>
+        <ContentComponent></ContentComponent>
+      </UserInfoContext.Provider>
+    </ThemeProvider>
   );
 }
 
