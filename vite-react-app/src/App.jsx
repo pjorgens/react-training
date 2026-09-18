@@ -7,8 +7,13 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   return (
     <>
+      <div>
+        <span>Current api url: {apiUrl}</span>
+      </div>
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
