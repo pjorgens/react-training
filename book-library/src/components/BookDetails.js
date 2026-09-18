@@ -3,15 +3,24 @@ import { BooksContext } from '../BooksContext';
 import { useParams } from 'react-router-dom';
 
 export default function BookDetails() {
-    const bookId = useParams();
+    const { bookId } = useParams();
     const books = useContext(BooksContext);
+    const book = books.find(b => b.id === parseInt(bookId));
 
-    const book = books.find(b => b.id == bookId);
+    if (books.length === 0) {
+        return <div>Loading...</div>
+    }
 
-    useEffect(() => {
-        console.log(book);
-    });
+    if (!book) {
+        return <div>Book not found</div>
+    }
 
-    return (<></>);
+    return (
+        <div>
+            <h1>{book.title}</h1>
+            <h2>by {book.author}</h2>
+            <p>{book.description}</p>
+        </div>
+    );
 }
 
