@@ -1,5 +1,7 @@
+import { calculateTotal } from "../utils/calculateTotal";
+
 export function InvoiceDetails({ invoiceNumber, customerName, amount, dueDate, taxRate, status }) {
-    const totalWithTax = (amount * (1 + taxRate)).toFixed(2);
+    const totalWithTax = calculateTotal(amount, taxRate);
 
     return (
         <div>
